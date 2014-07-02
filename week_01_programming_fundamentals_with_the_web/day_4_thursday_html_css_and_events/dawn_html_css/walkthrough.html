@@ -2,18 +2,21 @@
 <html>
 <head>
   <style>
-    /* I do (4): */
+    /* I do (5): */
+    img {
+      float: right;
+    }
     body {
       font-family: Georgia, serif;
       color: #888;
     }
-    /* You do (4): */
+    /* You do (5): */
     h2 {
       font-family: Helvetica, sans-serif;
       color: #444;
     }
   </style>
-  <!-- then (5), move it to an external stylesheet and explain that
+  <!-- then (6), move it to an external stylesheet and explain that
        this lets multiple webpages share the same look -->
   <link rel="stylesheet" href="walkthrough.css" />
 </head>
@@ -24,10 +27,10 @@
   <p>But it should be in a paragraph tag!</p>
   <h1>I do (1): Header!</h1>
   <h2>You do (1): subheader!</h2>
-  <p>I do (2): I am a big fan of <a href="http://bing.com">Bing</a>, everyone loves the underdog</p>
-  <p>You do (2): Hahaha I'm just kidding, of course not, I use <a href="http://google.com">Google</a> just like everyone else in the world, including Microsoft employees</p>
+  <p><!-- I do (4) only, skip this initially: "some tags, known as 'self-closing tags' or 'void tags', may not have children at all" --><img src="http://img1.wikia.nocookie.net/__cb20101019022831/logopedia/images/c/c6/Bing_logo.png" />I do (2): I am a big fan of <a href="http://bing.com">Bing</a>, everyone loves the underdog</p>
+  <p><!-- You do (4): --><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/320px-Googlelogo.png" />You do (2): Hahaha I'm just kidding, of course not, I use <a href="http://google.com">Google</a> just like everyone else in the world, including Microsoft employees</p>
   <ol>
-    <!-- I do (3): (say these like The Count from Sesame Street) -->
+    <!-- I do (3): "some tags only allow certain tags inside" (also, see if you can do an impression of The Count from Sesame Street :D) -->
     <li>Ah ha ha!</li>
     <li>Ah ha ha!</li>
     <li>Ah ha ha!</li>
@@ -36,10 +39,10 @@
     <!-- You do (3): some websites you like -->
     <li><a href="http://en.wikipedia.org">Wikipedia</a> is an epic Massively-Multiplayer Online Role-Playing Game where people pretend to be dry academics</li>
   </ul>
-  <!-- go up and style stuff (4),
-       split out into external stylesheet (5),
-       add class="special" to an li (6),
-       finally nested selectors -> nested link color issue, I do (7): -->
+  <!-- go up and style stuff (5),
+       split out into external stylesheet (6),
+       add class="special" to an li (7),
+       finally nested selectors -> nested link color issue, I do (8): -->
   <p>A paragraph with something <em>emphasized</em>, like so.</p>
   <blockquote>
     <p>This is a quote from some famous person who undoubtedly has something <em>very important</em> to say.</p>
