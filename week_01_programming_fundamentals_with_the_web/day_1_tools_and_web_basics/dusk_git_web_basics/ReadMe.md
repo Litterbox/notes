@@ -25,6 +25,18 @@
 	* formats of responses
 		* HTML
 		* JSON
+* Git Talk
+	* Basics
+		* `add`
+		* `commit`
+		* `push`
+		* `clone`
+	* Homework Workflow
+		* `fork`
+		* `clone`
+		* `push`
+		* pull requests
+		* form submission
 	
 =======
 
