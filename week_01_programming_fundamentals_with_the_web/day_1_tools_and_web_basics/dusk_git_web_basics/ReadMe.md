@@ -6,15 +6,22 @@
 
 * Quiz Review
 * Finish up command line
+	* `|` (pipe), `cat`, `>`, `>>`
+	* `fortune`, `wall-cat`, `wget`
+	* vim 
+		* `:wq`, insert mode, escape
+	* `ZShell`
 * Web Basics
 	* History of the Web
 	* Different parts of URL
 		* DNS
 		* query params
-		* [https://github.com/wdi-sf-jan-2014/notes/blob/master/intro_web/IntroToWeb.md](https://github.com/wdi-sf-jan-2014/notes/blob/master/intro_web/IntroToWeb.md)
+		* hash fragments
+			* Wikipedia
 		* HTTP Practice \w CURL
 			* Types of requests
 			* [http://httpkit.com/resources/HTTP-from-the-Command-Line/](http://httpkit.com/resources/HTTP-from-the-Command-Line/)
+		
 	* formats of responses
 		* HTML
 		* JSON
@@ -213,7 +220,6 @@ Let's look at some tabs:
 
 - Console - a place to talk Javascript to the page, that's for later
 
-### H
 
 
 
