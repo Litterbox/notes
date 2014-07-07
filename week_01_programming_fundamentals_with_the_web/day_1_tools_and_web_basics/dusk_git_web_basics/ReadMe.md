@@ -21,6 +21,7 @@
 		* HTTP Practice \w CURL
 			* Types of requests
 			* [http://httpkit.com/resources/HTTP-from-the-Command-Line/](http://httpkit.com/resources/HTTP-from-the-Command-Line/)
+		* example
 		
 	* formats of responses
 		* HTML
