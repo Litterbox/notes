@@ -27,6 +27,8 @@
 		* JSON
 * Git Talk
 	* Basics
+		* `init`
+			* readme
 		* `add`
 		* `commit`
 		* `push`
@@ -37,6 +39,8 @@
 		* `push`
 		* pull requests
 		* form submission
+	* If Time Permits
+		* GitHub Pages
 	
 =======
 
