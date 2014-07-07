@@ -116,7 +116,7 @@ Links in the **Topical Index** are relative to the repo, so if one were to add `
 
 ```
 * prep_work
-  * [intro_git](/00/day_1/dawn/intro_git)
+  * [intro_git](/week_00_prep_work/day_1/dawn/intro_git/git.md)
 ```
 
 ### Ignored Files
