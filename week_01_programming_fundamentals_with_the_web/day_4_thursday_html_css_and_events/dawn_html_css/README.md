@@ -2,6 +2,8 @@
 
 Agenda:
 - 30 min: warm-up: anatomy of an HTML page, and of a stylesheet
+    - Example HTML source: https://drive.google.com/file/d/0B0KCZoWQfqnWNlJzVHpfVU9oRGc
+        - (based on the actual source code for http://example.com )
     - Circle one each of a(n) ...
         - ... HTML ...
             - tag
