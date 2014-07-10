@@ -1,6 +1,7 @@
-/* external stylesheet (6) */
+/* internal -> external stylesheet (6) */
 img {
   float: right;
+  height: 2em;
 }
 body {
   font-family: Georgia, serif;
@@ -16,7 +17,7 @@ h2 {
 }
 /* You do (7): */
 .first {
-  font-size: .8em;
+  font-style: italic;
 }
 /* after adding blockquote and em's, I do (8): */
 blockquote {
@@ -31,13 +32,16 @@ h2 a {
 }
 /* finally box model; I do (9): */
 blockquote {
-  border-left: 5px solid #eee;
+  border-left: 5px solid #ccc;
   padding-left: 1em;
   margin: 0;
 }
 /* You do (9): */
 blockquote {
-  border-left: 1px solid #888;
-  padding-left: 0;
-  margin-left: 1em;
+  border-left: 2px dotted #888;
+  padding-left: .2em;
+  margin: 1em;
+}
+ul {
+  padding: 1.2em;
 }
