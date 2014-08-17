@@ -2,7 +2,7 @@
 
 Two principles of Rails
 
-DRY - keep your code DRY - concice, conistent code
+DRY - keep your code DRY - concise, conistent code
 
 Convention over configuration - built using sensible defaults which speeds development and means that there is less code to maintain. All we have to do is specify unconventional aspects
 
@@ -15,8 +15,6 @@ __V__iew - The view is the Presentation layer. It's what the user sees and inter
 __C__ontroller - The controller will make decisions based on the request and then control what happens in response. It controls the interaction with our models and with our views. 
 
 ![MVC Diagram](http://i.ytimg.com/vi/3mQjtk2YDkM/0.jpg)
-
-Rails actually has names for the code libraries it uses for these three parts. It calls the controller ActionController, and the view ActionView. And the model is ActiveRecord. Notice that that's active record, not action record, like the other two. Those names will become familiar as we work with Rails. We're going to be accessing parts of active record when we write code in a model.
 
 M - ActiveRecord
 V - ActionView
@@ -33,11 +31,11 @@ But then it says, bundle install at the end, so, it's created all the files, and
 
 ### Bundler
 
-Bundler is a separate gem from Rails, and can be used outside of Rails, but Rails is going to depend on it ,to manage the RubyGems that our application needs. The first thing you need to know, is that there are two files that matter to bundler - Gem file, and gem file.lock. Look at GemFile. This contains configuration information about what gems we want to load. And ,specifically, what version of gems as well. So, you can see for example, that it's loading from the source rubygems.org. It's specifying that, that's what this application wants.
+Bundler is a separate gem from Rails, and can be used outside of Rails, but Rails is going to depend on it to manage the RubyGems that our application needs. The first thing you need to know, is that there are two files that matter to bundler - Gem file, and gem file.lock. Look at GemFile. This contains configuration information about what gems we want to load. 
 
-Bundler is going to sort all of those out for us, and it's going to create a tree of gems that it ought to load with all the dependencies that ought to be loaded with it. And, after it creates that list, or manifest file, it's going to store it in Gemfile.lock. We can take a look at that file as well. You'll see, it looks very similar in content, but the format is very different. 
+Bundler is going to sort all of those out for us, and it's going to create a tree of gems that it ought to load with all the dependencies that ought to be loaded with it. And, after it creates that list, or manifest file, it's going to store it in Gemfile.lock. 
 
-You never want to edit gemfile.lock yourself. That's Bundler's file to put its results in. Gem File is the one that you'll edit. Now, how do you tell Bundler to take your Gym file and turn it into Gem File.Lock. Well, with one simple command. Bundle, install. You'll remember that when we created our rails application at the end of the process, it ran Bundle Install for us.
+You never want to edit gemfile.lock yourself. That's Bundler's file to put its results in. GemFile is the one that you'll edit. Now, how do you tell Bundler to take your GemFile and turn it into GemFile.Lock using bundle install.
 
 bundle exec - run this before rake db:migrate if you're having issues
 
@@ -55,7 +53,7 @@ This will start a server on localhost:3000
 
 - We need to edit something in our config file! Go to database.yml
 - See that it is using NAMEOFAPP_development so we need to fix that
-- How do we do that? createdb NAMEOFAPP_development
+- How do we do that? rake db:create
 
 - when this is done try rails server again and look at the app
 
@@ -150,7 +148,7 @@ name.html.erb
 - Process with: ERb
 - Output format: HTML
 
-## Instance varialbes for data into our views
+## Instance variables for data into our views
 
 - inside a controller action include
 	```
