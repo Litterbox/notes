@@ -4,7 +4,7 @@
 
 ## Rake
 
-Rake is a simple ruby helper program. It helps us to perform tasks by running scripts. A typical rake command works like rake and then a space, followed by whatever task we'd like it to perform. We can also write our own tasks and if we did, those would go inside the lib tasks folder, which is here. We can see which tasks are available, both the Rails default tasks and any custom tasks from the command line.
+Rake is a simple ruby helper program. It helps us to perform tasks by running scripts. A typical rake command works like rake and then a space, followed by whatever task we'd like it to perform. We can also write our own tasks and if we did, those would go inside the lib tasks folder. We can see which tasks are available, both the Rails default tasks and any custom tasks from the command line.
 
 In terminal you can type type rake -T. That's going to return a list of the tasks that we have available. It returns a long list of all the tasks. Notice in particular, that some of these tasks have db in front of them. There's quite a few of them that are used for working with the database. If we want to see just those listings, you can amend your last command so that it's rake -T db.
 
