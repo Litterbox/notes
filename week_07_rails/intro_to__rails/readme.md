@@ -2,9 +2,8 @@
 
 Two principles of Rails
 
-DRY - keep your code DRY - concice, conistent code
-
-Convention over configuration - built using sensible defaults which speeds development and means that there is less code to maintain. All we have to do is specify unconventional aspects
+1. DRY - keep your code DRY and use concice, conistent code.
+2. Convention over configuration - Rails is built using sensible defaults which speeds development and means that there is less code to maintain. All we have to do is specify unconventional aspects if we choose.
 
 Rails uses an __MVC__ architecture
 
@@ -15,12 +14,6 @@ __V__iew - The view is the Presentation layer. It's what the user sees and inter
 __C__ontroller - The controller will make decisions based on the request and then control what happens in response. It controls the interaction with our models and with our views. 
 
 ![MVC Diagram](http://i.ytimg.com/vi/3mQjtk2YDkM/0.jpg)
-
-Rails actually has names for the code libraries it uses for these three parts. It calls the controller ActionController, and the view ActionView. And the model is ActiveRecord. Notice that that's active record, not action record, like the other two. Those names will become familiar as we work with Rails. We're going to be accessing parts of active record when we write code in a model.
-
-M - ActiveRecord
-V - ActionView
-C - ActionController
 
 ### How to create a rails project
 
@@ -55,7 +48,7 @@ This will start a server on localhost:3000
 
 - We need to edit something in our config file! Go to database.yml
 - See that it is using NAMEOFAPP_development so we need to fix that
-- How do we do that? createdb NAMEOFAPP_development
+- How do we do that? `createdb NAMEOFAPP_development` or `rake db:create`
 
 - when this is done try rails server again and look at the app
 
@@ -180,8 +173,6 @@ end
 
 then run rake server
   
-
-https://github.com/wdi-sf-march-2014/notes/blob/master/IntroRailsRelated/IntroToRails/rails_routing.md
 
 
 
