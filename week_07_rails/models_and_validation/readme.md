@@ -205,7 +205,7 @@ Where(conditions)
 
 for all of these validations you can pass in an error message of - :message => "Something error related" 
 
-- validates_presense_of - attribute must not be blank
+- validates_presence_of - attribute must not be blank
 - validates_length_of - must have a length of x. Pass in a hash with (:is, :minimum, :maximum, etc.) 
 - validates_numericality_of - attribute must be an integer or float (can pass in :equal_to)
 - validates_inclusion_of - attribute must be in a list of choices 
