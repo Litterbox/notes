@@ -113,6 +113,10 @@ user.delete
 - It also creates a model_name.rb file
 - File names, class names and table names really matter!
 
+## Adding data to the model
+
+- In our model we specify our validations and relationships 
+
 ## CRUD in Rails Console
 
 - to enter, go to terminal and in the root of your rails app type - `rails console or rails c`
