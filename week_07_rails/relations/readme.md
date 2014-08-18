@@ -86,6 +86,7 @@ Example:
 
 #### Polymorphic associations
 
+Treehouse
 See old notes
 
 https://github.com/wdi-sf-march-2014/notes/blob/master/IntroRailsRelated/ModelAssociations/ModelAssociations.md
