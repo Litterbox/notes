@@ -20,14 +20,13 @@ These reside in our db directory and to create one we use
 
 ```rails generate migration MIGRATION_NAME```
 
-This comes with a change method which is a shortcut, so instead let's build it out the long and short way using up and down.
+## Generating Models 
 
 When you generate a model in rails it will generate a matching migration
 
-```rails generate model MODEL_NAME```
+```rails generate model MODEL_NAME column_name:data_type```
 
-use create_table and drop_table to remove tables
-we use a code block to add columns
+In our migration we use a code block to add columns
 ```t.column "first_name", :string, :limit => 50```
 or
 ```t.string "first_name", :limit => 50```
@@ -78,7 +77,7 @@ Then
 Or
 ```rake db:migrate:up VERSION=X```
 ```rake db:migrate:down VERSION=X```
-
+up 
 
 ## Migration methods
 
