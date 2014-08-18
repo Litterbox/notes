@@ -64,9 +64,9 @@ Also note that Rails automatically adds an ID column
 
 Rails will run all migrations that have not been run with rake db migrate
 
-To go back
+To go back use
 
-```rake db:migrate VERSION=0```
+`rake db:rollback` 
 
 To get the ID for jumping back and forth use 
 
@@ -78,6 +78,7 @@ Then
 Or
 ```rake db:migrate:up VERSION=X```
 ```rake db:migrate:down VERSION=X```
+
 
 ## Migration methods
 
