@@ -67,9 +67,9 @@ This will start a server on localhost:3000
 - create a new rails app using -d postgresql
 - run `rails server` and see what happens
 
-- We need to edit something in our config file! Go to database.yml
-- See that it is using NAMEOFAPP_development so we need to fix that
-- How do we do that? `createdb NAMEOFAPP_development` or `rake db:create`
+- we need to edit something in our config file! Go to database.yml
+- see that it is using NAMEOFAPP_development so we need to fix that
+- how do we do that? `createdb NAMEOFAPP_development` or `rake db:create`
 
 - when this is done try rails server again and look at the app
 
