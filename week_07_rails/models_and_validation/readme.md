@@ -347,4 +347,3 @@ def username_is_allowed
 end
 ```
 
-https://github.com/wdi-sf-march-2014/notes/blob/master/IntroRailsRelated/ModelsInRails/rails_models.md
