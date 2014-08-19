@@ -29,8 +29,6 @@ For this lab, we'd like you to strengthen your Rails console skills. This lab is
 21. Find all of the students and limit the search to 5 students, starting with the 2nd student and finally, order the students in alphabetical order
 20. Delete Jonathan Doesmith
 
-
-
 ### Bonus
 1. Use the validates_format_of and regex to only validate names that have letters and start with a capital letter
 2. Write a custom validation to ensure that no one named Delmer Reed, Tim Licata, Anil Bridgepal or Elie Schoppik is included in the students table
