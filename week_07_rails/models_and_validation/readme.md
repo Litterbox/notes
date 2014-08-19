@@ -237,17 +237,20 @@ Sometimes you can not reverse things with change like when you remove a column
 2 Different ways
 
 Find/save
+
 1. Find - user = User.find(1)
 2. Set - user.first_name = "Taco"
 3. Save - user.save
 
 Update
+
 1. user = User.find(1)
 2. user.update_attributes(:first_name => "taco")
 
 #### Delete
 
 Find/destroy
+
 1. Find - user = User.find(1)
 2. Destroy (not delete, delete bypasses some rails features stick with destroy)- user.destroy
 
