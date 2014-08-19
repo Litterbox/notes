@@ -80,8 +80,8 @@ You have to put any gem you want to use in your Gemfile. You have to run bundle 
 ## Create a controller and view
 
 - rails generate controller NAME PAGE (index)
-- in the controller add the line ``` layout false```
-- add "Hello world in the erb page"
+- in the controller add the line `layout false`
+- add "Hello, World!" in the erb page
 
 - now how do we get to this page? What do we need? A route!
 - go to routes.rb see that we have a /demo/index
