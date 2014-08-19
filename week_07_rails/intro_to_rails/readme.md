@@ -19,7 +19,7 @@ Rails uses an __MVC__ architecture
 
 ``` rails new NAME_OF_APP```
 
-to create a new project without tests but with a database (rails defaults to sqlite)
+to create a new project without the Rails testing framework and with a database (rails defaults to sqlite)
 ``` rails new NAME_OF_APP -T -d DB_TYPE```
 
 But then it says, bundle install at the end, so, it's created all the files, and now it's telling bundler to install all of the gems that might be missing. 
