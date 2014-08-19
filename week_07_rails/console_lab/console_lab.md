@@ -20,7 +20,7 @@ For this lab, we'd like you to strengthen your Rails console skills. This lab is
 10. Show the number of errors in the errors array for this student
 11. In one command, Change John Doe's name to Jonathan Doesmith 
 12. Clear the errors array
-13. Save Jonathan Doesmithco. 
+13. Save Jonathan Doesmith. 
 15. Find all of the Students
 16. Find the student with an ID of 128 and if it does not exist, make sure it returns nil and not an error
 17. Find the first student in the table
