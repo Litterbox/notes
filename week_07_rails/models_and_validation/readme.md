@@ -203,7 +203,37 @@ execute("any SQL string") - rare
 ```
 
 What does `change` do? It knows how to go up and down
-Sometimes you can not reverse things with change like when you remove a column
+Sometimes you can not reverse things with change like when you remove
+a column
+
+## In-class Migration Example
+
+Let's store people's ages along with their names. Generate a new
+migration file with name AddAgeToPeople.
+
+`rails generate migration AddAgeToPeople`
+
+Open newly created migration file and modify the `change` method.
+
+```
+  def change
+    add_column :people, :age, :integer
+  end
+```
+
+Run the migration so that the column is added to the table.
+
+`rake db:migrate`
+
+We can check that the migration ran successfully.
+
+`rake db:migrate:status`
+
+We can also undo the migration if we didn't like it. (Not necessary
+now, but good to know.  If you do this, you can simple re-run the
+migration with db:migrate).
+
+`rake db:rollback`
 
 ## CRUD in Rails Console
 
