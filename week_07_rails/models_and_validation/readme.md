@@ -305,8 +305,8 @@ Where(conditions)
 	- User.where(:first_name => "Elie")
 	- this returns an ActiveRelation object and can also be chained
 	- can pass in a hash, string or array
-		- User.where("first_name" = "Elie")
-		- User.where(["first_name" = ?, "Elie"]) - SQL injection safe	
+		- User.where("first_name" => "Elie")
+		- User.where("first_name = ?", "Elie") - SQL injection safe
 	- use .first to get the object instead of array
 
 #### Query methods - order, limit and offset
