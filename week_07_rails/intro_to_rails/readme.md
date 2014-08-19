@@ -54,19 +54,22 @@ bundle exec - run this before rake db:migrate if you're having issues
 
 ### Start a server
 
-``` rails server```
-``` rails s```
+`rails server`
+
+or the equivalent but shorter:
+
+`rails s`
 
 This will start a server on localhost:3000
 
 ## Experiment
 
 - create a new rails app using -d postgresql
-- run rails server and see what happens
+- run `rails server` and see what happens
 
-- We need to edit something in our config file! Go to database.yml
-- See that it is using NAMEOFAPP_development so we need to fix that
-- How do we do that? `createdb NAMEOFAPP_development` or `rake db:create`
+- we need to edit something in our config file! Go to database.yml
+- see that it is using NAMEOFAPP_development so we need to fix that
+- how do we do that? `createdb NAMEOFAPP_development` or `rake db:create`
 
 - when this is done try rails server again and look at the app
 
@@ -76,9 +79,9 @@ You have to put any gem you want to use in your Gemfile. You have to run bundle 
 
 ## Create a controller and view
 
-- rails generate controller NAME PAGE (index)
-- in the controller add the line ``` layout false```
-- add "Hello world in the erb page"
+- `rails generate controller demo index`
+- in the controller add the line `layout false`
+- add "Hello, World!" in the erb page
 
 - now how do we get to this page? What do we need? A route!
 - go to routes.rb see that we have a /demo/index
