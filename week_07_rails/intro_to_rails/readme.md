@@ -114,11 +114,6 @@ You have to put any gem you want to use in your Gemfile. You have to run bundle 
 
 ![Server Request](http://media.tumblr.com/tumblr_lowzw43lfd1qjrbah.png)
 
-- Add test.html to the public folder
-- got to /test.html or /test
-- make a new directory called demo and put test inside demo
-- then change the file to index.html to show that public files come first
-
 ## Routing
 
 - in routes.rb we include our routing (very similar to app.js in express)
