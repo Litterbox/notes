@@ -45,7 +45,7 @@ content, but the format is very different.
 You never want to edit Gemfile.lock yourself. That's Bundler's file to
 put its results in. Gemfile is the one that you'll edit. Now, how do
 you tell Bundler to take your Gemfile and turn it into Gemfile.lock?
-Well, with one simple command. `bundle install`. You'll remember that
+Well, with one simple command: `bundle install`. You'll remember that
 when we created our rails application at the end of the process, it
 ran Bundle Install for us.
 
