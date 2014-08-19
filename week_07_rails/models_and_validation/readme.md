@@ -61,11 +61,12 @@ Create our database.
 
 `rake db:create`
 
-Create a new model called Person with a name property that's a string.
+Create a new model called User with first_name and last_name
+properties that are strings.
 
-`rails generate model Person name:string`
+`rails generate model User first_name:string last_name:string`
 
-Migrate our database to create the `people` table.
+Migrate our database to create the `users` table.
 
 `rake db:migrate`
 
@@ -85,21 +86,24 @@ This is IRB with your rails app loaded in.
 
 Inside of your Rails console:
 
-Create a new Person object.
+Create a new User object.
 
-`irb(main):001:0> me = Person.new`
+`irb(main):001:0> me = User.new`
 
-Set the name of the person.
+Set the name of the user.
 
-`irb(main):002:0> me.name = "Tim"`
+```
+irb(main):002:0> me.first_name = "Tim"
+irb(main):002:0> me.last_name = "Licata"
+```
 
-Save your person to the database.
+Save your user to the database.
 
 `irb(main):003:0> me.save`
 
-Retrieve all of the people in the database.
+Retrieve all of the users in the database.
 
-`irb(main):004:0> Person.all`
+`irb(main):004:0> User.all`
 
 ## More on Generating Models
 
@@ -208,16 +212,16 @@ a column
 
 ## In-class Migration Example
 
-Let's store people's ages along with their names. Generate a new
-migration file with name AddAgeToPeople.
+Let's store user's ages along with their names. Generate a new
+migration file with name AddAgeToUsers.
 
-`rails generate migration AddAgeToPeople`
+`rails generate migration AddAgeToUsers`
 
 Open newly created migration file and modify the `change` method.
 
 ```
   def change
-    add_column :people, :age, :integer
+    add_column :users, :age, :integer
   end
 ```
 
