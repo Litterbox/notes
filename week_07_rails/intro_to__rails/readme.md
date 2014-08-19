@@ -26,11 +26,29 @@ But then it says, bundle install at the end, so, it's created all the files, and
 
 ### Bundler
 
-Bundler is a separate gem from Rails, and can be used outside of Rails, but Rails is going to depend on it ,to manage the RubyGems that our application needs. The first thing you need to know, is that there are two files that matter to bundler - Gem file, and gem file.lock. Look at GemFile. This contains configuration information about what gems we want to load. And ,specifically, what version of gems as well. So, you can see for example, that it's loading from the source rubygems.org. It's specifying that, that's what this application wants.
+Bundler is a separate gem from Rails, and can be used outside of
+Rails, but Rails is going to depend on it to manage the RubyGems that
+our application needs. The first thing that you need to know is that
+there are two files that matter to bundler - Gemfile and Gemfile.lock.
+Look at Gemfile. This contains configuration information about what
+gems we want to load. And, specifically, what version of gems as well.
+This might look similar to the package.json file from our Node/Express
+days.
 
-Bundler is going to sort all of those out for us, and it's going to create a tree of gems that it ought to load with all the dependencies that ought to be loaded with it. And, after it creates that list, or manifest file, it's going to store it in Gemfile.lock. We can take a look at that file as well. You'll see, it looks very similar in content, but the format is very different. 
+Bundler is going to sort all of those out for us, and it's going to
+create a tree of gems that it ought to load with all the dependencies
+that ought to be loaded with it. And, after it creates that list, or
+manifest file, it's going to store it in Gemfile.lock. We can take a
+look at that file as well. You'll see, it looks very similar in
+content, but the format is very different.
 
-You never want to edit gemfile.lock yourself. That's Bundler's file to put its results in. Gem File is the one that you'll edit. Now, how do you tell Bundler to take your Gym file and turn it into Gem File.Lock. Well, with one simple command. Bundle, install. You'll remember that when we created our rails application at the end of the process, it ran Bundle Install for us.
+You never want to edit Gemfile.lock yourself. That's Bundler's file to
+put its results in. Gemfile is the one that you'll edit. Now, how do
+you tell Bundler to take your Gemfile and turn it into Gemfile.lock?
+Well, with one simple command. `bundle install`. You'll remember that
+when we created our rails application at the end of the process, it
+ran Bundle Install for us.
+
 
 bundle exec - run this before rake db:migrate if you're having issues
 
