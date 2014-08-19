@@ -130,7 +130,7 @@ root :to => 'demo#index'
 or 
 root "demo#index"
 
-- remember, routes like express start from the top and go to bottom
+- remember, routes in Rails are like express in that they start from the top and go to bottom
 
 ## Rendering templates
 
