@@ -316,10 +316,16 @@ this returns an ActiveRelation object and can also be chained
 #### Query methods - order, limit and offset
 
 - order (table_name.column_name ASC/DESC)
+  - User.order(:age)
+  - User.order("age")
+  - User.order(age: :asc)
+  - User.order(age: :desc)
 - limit (integer)
+  - User.limit(1)
 - offset (integer)
+  - User.offset(5)
 
-- these can be chained together 
+these can be chained together
 
 ## Validations
 
