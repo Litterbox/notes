@@ -19,8 +19,8 @@ __C__ontroller - The controller will make decisions based on the request and the
 
 ``` rails new NAME_OF_APP```
 
-to create a new project with a database (rails defaults to sqlite)
-``` rails new NAME_OF_APP -d DB_TYPE```
+to create a new project without tests but with a database (rails defaults to sqlite)
+``` rails new NAME_OF_APP -T -d DB_TYPE```
 
 But then it says, bundle install at the end, so, it's created all the files, and now it's telling bundler to install all of the gems that might be missing. 
 
