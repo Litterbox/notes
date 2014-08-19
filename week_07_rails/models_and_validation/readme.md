@@ -386,7 +386,7 @@ validate :username_is_allowed
 
 def username_is_allowed
 	if FORBIDDEN_USERNAMES.include?(username)
-		errors.add(:username, "this is a restricted usernmae")
+		errors.add(:username, "this is a restricted username")
 	end
 end
 ```
