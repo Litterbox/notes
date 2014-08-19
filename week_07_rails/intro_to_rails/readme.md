@@ -13,7 +13,7 @@ Rails uses an __MVC__ architecture
 
 <b>C</b>ontroller - The controller will make decisions based on the request and then control what happens in response. It controls the interaction with our models and with our views. 
 
-![MVC Diagram](http://i.ytimg.com/vi/3mQjtk2YDkM/0.jpg)
+![MVC Diagram](http://elibildner.files.wordpress.com/2012/06/screen-shot-2012-06-05-at-2-12-18-am.png)
 
 ### How to create a rails project
 
@@ -109,10 +109,6 @@ You have to put any gem you want to use in your Gemfile. You have to run bundle 
 - test for testing
 - tmp - temp files for rails to store stuff
 - vendor - much less used because of gems
-
-## Rails Server request 
-
-![Server Request](http://media.tumblr.com/tumblr_lowzw43lfd1qjrbah.png)
 
 ## Routing
 
