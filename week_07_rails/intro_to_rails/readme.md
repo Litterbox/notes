@@ -7,11 +7,11 @@ Two principles of Rails
 
 Rails uses an __MVC__ architecture
 
-__M__odel - The model refers to the data objects that we use. It's the object oriented approach to design. The data in our database will be the most common type of object that we'll put there.
+*M*odel - The model refers to the data objects that we use. It's the object oriented approach to design. The data in our database will be the most common type of object that we'll put there.
 
-__V__iew - The view is the Presentation layer. It's what the user sees and interacts with, essentially the web pages. The HTML, the CSS and the JavaScript. The controller processes and responds to user events, such as clicking on links and submitting forms. 
+*V*iew - The view is the Presentation layer. It's what the user sees and interacts with, essentially the web pages. The HTML, the CSS and the JavaScript. The controller processes and responds to user events, such as clicking on links and submitting forms. 
 
-__C__ontroller - The controller will make decisions based on the request and then control what happens in response. It controls the interaction with our models and with our views. 
+*C*ontroller - The controller will make decisions based on the request and then control what happens in response. It controls the interaction with our models and with our views. 
 
 ![MVC Diagram](http://i.ytimg.com/vi/3mQjtk2YDkM/0.jpg)
 
