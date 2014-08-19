@@ -369,6 +369,26 @@ validates :COL_NAME, :presence => true,
 										:uniqueness => true
 ```
 
+#### In-class Validation Example
+
+We set our validations in our app/models/user.rb model.
+
+```
+class User < ActiveRecord::Base
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+end
+```
+
+or
+
+```
+class User < ActiveRecord::Base
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+end
+```
+
 #### Custom validations
 ```
 validate :custom_method
