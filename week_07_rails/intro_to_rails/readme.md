@@ -54,8 +54,11 @@ bundle exec - run this before rake db:migrate if you're having issues
 
 ### Start a server
 
-``` rails server```
-``` rails s```
+`rails server`
+
+or the equivalent but shorter:
+
+`rails s`
 
 This will start a server on localhost:3000
 
