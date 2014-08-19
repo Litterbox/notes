@@ -61,11 +61,12 @@ Create our database.
 
 `rake db:create`
 
-Create a new model called Person with a name property that's a string.
+Create a new model called User with first_name and last_name
+properties that are strings.
 
-`rails generate model Person name:string`
+`rails generate model User first_name:string last_name:string`
 
-Migrate our database to create the `people` table.
+Migrate our database to create the `users` table.
 
 `rake db:migrate`
 
@@ -85,21 +86,24 @@ This is IRB with your rails app loaded in.
 
 Inside of your Rails console:
 
-Create a new Person object.
+Create a new User object.
 
-`irb(main):001:0> me = Person.new`
+`irb(main):001:0> me = User.new`
 
-Set the name of the person.
+Set the name of the user.
 
-`irb(main):002:0> me.name = "Tim"`
+```
+irb(main):002:0> me.first_name = "Tim"
+irb(main):002:0> me.last_name = "Licata"
+```
 
-Save your person to the database.
+Save your user to the database.
 
 `irb(main):003:0> me.save`
 
-Retrieve all of the people in the database.
+Retrieve all of the users in the database.
 
-`irb(main):004:0> Person.all`
+`irb(main):004:0> User.all`
 
 ## More on Generating Models
 
@@ -203,7 +207,37 @@ execute("any SQL string") - rare
 ```
 
 What does `change` do? It knows how to go up and down
-Sometimes you can not reverse things with change like when you remove a column
+Sometimes you can not reverse things with change like when you remove
+a column
+
+## In-class Migration Example
+
+Let's store user's ages along with their names. Generate a new
+migration file with name AddAgeToUsers.
+
+`rails generate migration AddAgeToUsers`
+
+Open newly created migration file and modify the `change` method.
+
+```
+  def change
+    add_column :users, :age, :integer
+  end
+```
+
+Run the migration so that the column is added to the table.
+
+`rake db:migrate`
+
+We can check that the migration ran successfully.
+
+`rake db:migrate:status`
+
+We can also undo the migration if we didn't like it. (Not necessary
+now, but good to know.  If you do this, you can simple re-run the
+migration with db:migrate).
+
+`rake db:rollback`
 
 ## CRUD in Rails Console
 
@@ -237,17 +271,20 @@ Sometimes you can not reverse things with change like when you remove a column
 2 Different ways
 
 Find/save
+
 1. Find - user = User.find(1)
 2. Set - user.first_name = "Taco"
 3. Save - user.save
 
 Update
+
 1. user = User.find(1)
 2. user.update_attributes(:first_name => "taco")
 
 #### Delete
 
 Find/destroy
+
 1. Find - user = User.find(1)
 2. Destroy (not delete, delete bypasses some rails features stick with destroy)- user.destroy
 
@@ -268,21 +305,31 @@ You still have this when it's deleted you just can't change anything
 
 Search using conditionals:
 
-Where(conditions)
-	- User.where(:first_name => "Elie")
-	- this returns an ActiveRelation object and can also be chained
-	- can pass in a hash, string or array
-		- User.where("first_name" = "Elie")
-		- User.where(["first_name" = ?, "Elie"]) - SQL injection safe	
-	- use .first to get the object instead of array
+Where(conditions):
+
+- User.where(:first_name => "Elie")
+
+this returns an ActiveRelation object and can also be chained
+
+- can pass in a hash, string or array
+  - User.where("first_name" => "Elie")
+  - User.where("first_name = ?", "Elie")
+     - SQL injection safe
+- use .first to get the object instead of array
 
 #### Query methods - order, limit and offset
 
 - order (table_name.column_name ASC/DESC)
+  - User.order(:age)
+  - User.order("age")
+  - User.order(age: :asc)
+  - User.order(age: :desc)
 - limit (integer)
+  - User.limit(1)
 - offset (integer)
+  - User.offset(5)
 
-- these can be chained together 
+these can be chained together
 
 ## Validations
 
@@ -339,9 +386,8 @@ validate :username_is_allowed
 
 def username_is_allowed
 	if FORBIDDEN_USERNAMES.include?(username)
-		errors.add(:username, "this is a restricted usernmae")
+		errors.add(:username, "this is a restricted username")
 	end
 end
 ```
 
-https://github.com/wdi-sf-march-2014/notes/blob/master/IntroRailsRelated/ModelsInRails/rails_models.md
