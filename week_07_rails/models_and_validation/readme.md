@@ -1,35 +1,116 @@
-## Models and Validation
+# Models and Validation
 
-.yml - YAML, YAML Ain't Markup Language (recursive definition and a joke)
+## Objectives
 
-## Rake
+* Convert our knowledge of Sequelize models into knowledge of Rails models.
+* Use Rails to generate models & migrations for us.
+* Get comfortable with `rails console`.
+* Add validations to our models.
 
-Rake is a simple ruby helper program. It helps us to perform tasks by running scripts. A typical rake command works like rake and then a space, followed by whatever task we'd like it to perform. We can also write our own tasks and if we did, those would go inside the lib tasks folder. We can see which tasks are available, both the Rails default tasks and any custom tasks from the command line.
+## Definitions
 
-In terminal you can type type rake -T. That's going to return a list of the tasks that we have available. It returns a long list of all the tasks. Notice in particular, that some of these tasks have db in front of them. There's quite a few of them that are used for working with the database. If we want to see just those listings, you can amend your last command so that it's rake -T db.
+### Active Record
 
-## Migrations
+The ORM implementation that comes with Rails. Makes our objects
+intelligent without using SQL.
 
-Once you create a database and configure your Rails project to connect to it, you need to add tables. One way to do this is by writing Rails migrations. A migration is a set of database instructions. Those instructions are Ruby code, which migrates our database from one state to another. Essentially they describe database changes. In our migration we can create a table, add a column, change the name of a column, drop a table and much more. A migration will contain both the instructions for moving up to a new state, and also instructions for moving back down to the previous state.
+Active Record was described by Martin Fowler in his book Patterns of
+Enterprise Application Architecture. It is an implementation of the
+Active Record pattern which itself is a description of an Object
+Relational Mapping (ORM) system. [Additional reading](http://guides.rubyonrails.org/active_record_basics.html)
 
-If a migration has instructions to create a table when moving forward or up, it will also include the instructions to allow it to move back down by dropping the table. If you move up by adding three columns to the table then you'll also have instructions to move back down by removing those three columns. Being able to move in both the directions like this allows us to migrate in both directions. We can migrate our database to the newest version or migrate back to a previous version. Why use migrations? Migrations maintain our database schema with our application code.
+### Rake
 
-## Generating migrations
+Rake is a simple ruby helper program. It helps us to perform tasks by
+running scripts. A typical rake command works like rake and then a
+space, followed by whatever task we'd like it to perform. We can also
+write our own tasks and if we did, those would go inside the lib tasks
+folder. We can see which tasks are available, both the Rails default
+tasks and any custom tasks from the command line.
 
-These reside in our db directory and to create one we use
+In terminal you can type type `rake -T`. That's going to return a list
+of the tasks that we have available. It returns a long list of all the
+tasks. Notice in particular, that some of these tasks have db in front
+of them. There's quite a few of them that are used for working with
+the database. If we want to see just those listings, you can amend
+your last command so that it's `rake -T db`.  [Additional Reading](https://rubygems.org/gems/rake)
 
-```rails generate migration MIGRATION_NAME```
+### YAML
 
-## Generating Models 
+.yml - YAML, YAML Ain't Markup Language (recursive definition and a
+joke)
+
+## Creating a model
+
+`rails generate model CamelCaseName`
+
+- Creates a model_name.rb file.
+- This also creates a migration file.
+- In our model we specify our validations and relationships.
+- File names, class names and table names really matter!
+
+## In-class Exercise
+
+Generate a new Rails project. Set it up to use Postgres as our
+database (-d).  We're also excluding tests for now (-T) since we will
+be using a different testing package (RSpec) in the future.
+
+`rails new models_example -T -d postgresql`
+
+Create our database.
+
+`rake db:create`
+
+Create a new model called Person with a name property that's a string.
+
+`rails generate model Person name:string`
+
+Migrate our database to create the `people` table.
+
+`rake db:migrate`
+
+## Rails Console
+
+To enter, go to terminal and in the root of your rails app type
+
+`rails console`
+
+or
+
+`rails c`
+
+This is IRB with your rails app loaded in.
+
+## In-class Exercise (continued)
+
+Inside of your Rails console:
+
+Create a new Person object.
+
+`irb(main):001:0> me = Person.new`
+
+Set the name of the person.
+
+`irb(main):002:0> me.name = "Tim"`
+
+Save your person to the database.
+
+`irb(main):003:0> me.save`
+
+Retrieve all of the people in the database.
+
+`irb(main):004:0> Person.all`
+
+## More on Generating Models
 
 When you generate a model in rails it will generate a matching migration
 
-```rails generate model MODEL_NAME column_name:data_type```
+`rails generate model MODEL_NAME column_name:data_type`
 
 In our migration we use a code block to add columns
-```t.column "first_name", :string, :limit => 50```
+`t.column "first_name", :string, :limit => 50`
 or
-```t.string "first_name", :limit => 50```
+`t.string "first_name", :limit => 50`
 
 Table column types
 
@@ -56,6 +137,35 @@ Table column options
 ```
 
 Also note that Rails automatically adds an ID column
+
+## Migrations
+
+Once you create a database and configure your Rails project to connect
+to it, you need to add tables. One way to do this is by writing Rails
+migrations. A migration is a set of database instructions. Those
+instructions are Ruby code, which migrates our database from one state
+to another. Essentially they describe database changes. In our
+migration we can create a table, add a column, change the name of a
+column, drop a table and much more. A migration will contain both the
+instructions for moving up to a new state, and also instructions for
+moving back down to the previous state.
+
+
+If a migration has instructions to create a table when moving forward
+or up, it will also include the instructions to allow it to move back
+down by dropping the table. If you move up by adding three columns to
+the table then you'll also have instructions to move back down by
+removing those three columns. Being able to move in both the
+directions like this allows us to migrate in both directions. We can
+migrate our database to the newest version or migrate back to a
+previous version. Why use migrations? Migrations maintain our database
+schema with our application code.
+
+## Generating migrations
+
+These reside in our db directory and to create one we use
+
+```rails generate migration MIGRATION_NAME```
 
 ## Running migrations
 
@@ -95,32 +205,7 @@ execute("any SQL string") - rare
 What does `change` do? It knows how to go up and down
 Sometimes you can not reverse things with change like when you remove a column
 
-## ActiveRecord
-
-ORM that makes our objects intelligent without using SQL
-```
-user = User.new
-user.first_name = "Elie"
-user.save
-user.delete
-```
-
-## Creating a model
-
-`rails generate model CamelCaseName`
-
-- This creates a migration file
-- It also creates a model_name.rb file
-- File names, class names and table names really matter!
-
-## Adding data to the model
-
-- In our model we specify our validations and relationships 
-
 ## CRUD in Rails Console
-
-- to enter, go to terminal and in the root of your rails app type - `rails console or rails c`
-- this is IRB with your rails app loaded in
 
 #### Creating
 
