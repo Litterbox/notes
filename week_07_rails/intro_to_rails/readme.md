@@ -65,7 +65,7 @@ This will start a server on localhost:3000
 ## Experiment
 
 - create a new rails app using -d postgresql
-- run rails server and see what happens
+- run `rails server` and see what happens
 
 - We need to edit something in our config file! Go to database.yml
 - See that it is using NAMEOFAPP_development so we need to fix that
