@@ -1,94 +1,199 @@
-## Relations
+# Relations
 
-Always remember
-- belongs_to has FK
-- define both sides of the relationship
-- put your FKs in migration files!
+We've seen this topic before! Try to recall relationships/associations from Sequelize and with Rails - always remember
 
-## Relationship types
+- define all sides of the relationship (belongs_to / has_many / has_many_through)
+- belongs_to has the foreign key (FK)
+- put your FKs in the migration files
+- putting gem 'pry-rails' in your Gemfile and running `bundle install` will make life easier in Rails console
 
-#### One to one
-Classroom has 1 teacher
-Teacher is assigned 1 classroom
-Room 107 <=> Martha Cook
+# Relationship types (that we will use frequently)
 
-FK goes in the teacher table
-
-With Rails
-Classroom has_one :teacher
-Teacher belongs_to :classroom
-
-#### One to many
-1 Teacher has many courses
-Course belogs to teacher
-FK goes in course
-Martha Cook -> Algebra, Geometry, Physics
-
-Teacher has_many :courses
-Course belongs_to :teacher
-
-Methods attached (include all array methods too)
-Course.teacher
-Teacher.courses (returns an array)
-
-#### Many to many - simple
-
-A course has many students and belongs to many students
-A student has many courses and belongs to many courses
-
-Two FKs go in a join table
-
-4 students 
-4 courses
-
-we cant have 4 diff FKs on each course
-so we need a join table
-
-Course has_and_belongs_to_many :students
-Student has_and_belongs_to_many :courses
-
-Join table should not have a FK! so you pass in hash of :id => false in the create table method (before the do)
-We get the same methods as the 1-M relationships
-
-First thing you do is create a migration
-
-##### Rails convention 
-- first_table + _ + second_table
-- both table names are plural and in alphabetical
-- ex: collaborators_projects
-
-#### Many to many - rich joins
-
-If you want to add more than just IDs, use rich join! This table needs a PK!
+## One to many
 
 Example:
 
-- Course has_many :course_enrollments
-- CourseEnrollment belongs_to :course, belongs_to :student
-- Students has_many :course_enrollments
+One Owner `has_many` pets and 
+Many Pets `belogs_to` one owner
 
-In the join table use
+(FK goes in the pets table)
 
-t.references MODEL1
-t.references MODEL2
+Always remember - whenever there is a belongs_to in the model, there should be a FK in the matching migration!
 
-then add
+In our models we add:
 
-add_index :TABLE_NAME, ["MODEL1_ID", "MODEL2_ID"]
+```
+Owner
+- has_many :pets
+Pet
+- belongs_to :owner
+```
 
-using has_many:through allows reaching across a rich join and treats rich join like a has_and_belongs_to_many join
+In our pets migration file we can add:
 
-Example:
+` t.references :owner` or `t.integer :owner_id`
 
-- Course has_many :students, :through => :course_enrollments
-- CourseEnrollment belongs_to :course, belongs_to :student
-- Students has_many :courses, :through => :course_enrollments
+Now in Rails console add some information:
 
-#### Polymorphic associations
+```
+fido = Pet.create(name: "Fido")
+lassie = Pet.create(name: "Lassie")
+elie = Owner.create(name: "Elie")
+elie.pets
+fido.owner
+elie.pets << fido
+elie.pets << lassie
+elie.pets.size
+elie.pets.map(&:name)
+elie.pets.each {|x| puts "My pet is named #{x.name}!"}
+fido.owner
+```
 
-Treehouse
-See old notes
+### Class Exercise 1
 
-https://github.com/wdi-sf-march-2014/notes/blob/master/IntroRailsRelated/ModelAssociations/ModelAssociations.md
+Let's go back to our old Amazon example and create two models - Order and Item. Assume that one order can have many items. Here is an outline of what each model should contain
 
-https://github.com/wdi-sf-jan-2014/notes/blob/master/polymorphic_association/polymorphic_association.md
+1. Order - name, description
+2. Item - name, description
+
+Validate that each order name and item name are never empty. 
+
+If you have modeled this relationship correctly you should be able to type order.items and item.order without an error
+
+Once that's done - create five items and two orders and assign three items to order_id 1 and the remaining two items to order_id 2. Play around with some array methods you know (each, map, select, size) for each order.
+
+
+## Many to many
+
+Let's take the example of students and courses. A student can take many courses and a course can have many students. We cant have multiple FK's on each course and each student - so we need a join or linker table
+
+Let's create a table called 
+In our models we add:
+
+```
+rails generate model Student name:string
+rails generate model Course name:string
+rails generate model Enrollment enrollment_date:date 
+```
+After we've generated our model let's open up sublime and edit our models and our migration file<br>
+
+
+__In the model__ 
+
+A course `has_many` enrollments 
+A student `has_many` enrollments
+An enrollment `belongs_to` student and `belongs_to` course
+
+__In the migration__
+
+Always remember, the foreign keys go in the table that `belongs_to` others - so we put it in the enrollment table
+
+`t.references :course` <br>
+`t.references :student`
+
+```
+elie = Student.create(name: "Elie")
+tim = Student.create(name: "Tim")
+del = Student.create(name: "Del")
+```
+```
+algebra = Course.create(name: "Algebra")
+science = Course.create(name: "Science")
+english = Course.create(name: "English")
+french = Course.create(name: "French")
+```
+
+```
+elie.enrollments.create(enrollment_date: Time.now)
+algebra.enrollments.create(enrollment_date: Time.now)
+french.enrollments.create(enrollment_date: Time.now)
+```
+
+```
+enroll1 = Enrollment.find(1)
+enroll2 = Enrollment.find(2)
+```
+
+```
+elie.enrollments << enroll1
+elie.enrollments << enroll2
+tim.enrollments << enroll2
+science.enrollments << enroll1
+algebra.enrollments << enroll2
+```
+
+```
+science.enrollments << tim
+science.enrollments << elie
+```
+
+```
+elie.enrollments
+tim.enrollments
+algebra.enrollments
+```
+
+What happens when you run elie.courses? <br>
+What happens when you run science.students?
+
+### Class Exercise 2
+
+Let's kick Amazon up a notch - it's now your turn to model a many to many relationship! Let's now model the relationship between customers and products
+
+Many customers can buy many products <br>
+Many products can be bought by many customers
+
+1. Create 3 models (you can name the third model Sale)
+2. Add your FKs to the migration file
+3. Play around in Rails console and see if you can add products to a sale, and customers to a sale 
+
+## Many to many - through (skip over the join table)
+
+So in our last example, we were able to add items to the join table, but our models outside the join table had no ability to relate with each other. How can we fix this! The answer involves using has_many through - let's take a look at our course example
+
+Problem - elie.courses failed and science.students failed. We had to go through our enrollments table to find the data for each one.
+
+Solution - in the Course and Student model, make these changes. Our Enrollment model should stay the same.
+
+```
+- Course 
+has_many :enrollments
+has_many :students, :through => :enrollments
+- Enrollment 
+belongs_to :course, 
+belongs_to :student
+- Student 
+has_many :enrollments 
+has_many :courses :through => :enrollments
+```
+
+### Class Exercise 3
+
+Let's add through to our previous example. 
+
+
+
+#Less Common Associations
+
+##has_one
+
+* [has_one](http://guides.rubyonrails.org/association_basics.html#the-has-one-association)
+
+Like belongs_to except the foreign key is in the other other table (the same table as it would be for has_many)
+
+##has_one through:
+
+* [has_one through:](http://guides.rubyonrails.org/association_basics.html#the-has-one-through-association)
+
+Like has_many through except it's singular )
+
+##has_and_belongs_to_many
+
+* [has_and_belongs_to_many](http://guides.rubyonrails.org/association_basics.html#has-and-belongs-to-many-association-reference)
+
+More complicated to set up, requires a separate migration for the join table, similar to has_many through in many ways except there's no data associated with the join
+
+#Related Notes
+* [Associations Docs](http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html)
+
+* [Model field data types](http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column)
