@@ -67,8 +67,7 @@ Once that's done - create five items and two orders and assign three items to or
 
 Let's take the example of students and courses. A student can take many courses and a course can have many students. We cant have multiple FK's on each course and each student - so we need a join or linker table
 
-Let's create a table called 
-In our models we add:
+Let's create a some models called Student, Course and Enrollment (the Join table)
 
 ```
 rails generate model Student name:string
@@ -90,6 +89,8 @@ Always remember, the foreign keys go in the table that `belongs_to` others - so 
 
 `t.references :course` <br>
 `t.references :student`
+
+Once that's done, let's run rake db:migrate and move to Rails console where we'll add some data.
 
 ```
 elie = Student.create(name: "Elie")
@@ -149,7 +150,7 @@ Many products can be bought by many customers
 
 ## Many to many - through (skip over the join table)
 
-So in our last example, we were able to add items to the join table, but our models outside the join table had no ability to relate with each other. How can we fix this! The answer involves using has_many through - let's take a look at our course example
+So in our last example, we were able to add items to the join table, but our models outside the join table had no ability to relate with each other. How can we fix this? The answer involves using has_many through - let's take a look at our course example
 
 Problem - elie.courses failed and science.students failed. We had to go through our enrollments table to find the data for each one.
 
